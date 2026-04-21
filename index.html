@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>20 Rosas para Ti 💙</title>
+
+<style>
+body {
+    margin: 0;
+    background: linear-gradient(#87CEEB, #bde0fe);
+    font-family: 'Arial';
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* TITULOS */
+h1 {
+    margin-top: 30px;
+    font-size: 6vw;
+    color: #ff4d6d;
+    animation: aparecer 2s ease;
+}
+
+h2 {
+    color: white;
+}
+
+/* MENSAJE */
+.mensaje {
+    color: white;
+    font-size: 4.5vw;
+    animation: aparecer 3s ease;
+}
+
+/* RAMO */
+.ramo {
+    width: 300px;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    animation: flotarRamo 3s infinite ease-in-out;
+}
+
+/* ANIMACIONES */
+@keyframes aparecer {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes flotarRamo {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-10px);}
+    100% {transform: translateY(0);}
+}
+
+/* CORAZONES */
+.corazon {
+    position: fixed;
+    color: #ff4d6d;
+    animation: subir 6s linear infinite;
+}
+
+@keyframes subir {
+    0% {transform: translateY(100vh); opacity: 0;}
+    50% {opacity: 1;}
+    100% {transform: translateY(-10vh); opacity: 0;}
+}
+
+/* BOTON */
+button {
+    margin-top: 20px;
+    background: #ff4d6d;
+    border: none;
+    padding: 12px 25px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff1e4d;
+    transform: scale(1.1);
+}
+
+/* CARTA */
+.carta {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 300px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    transition: 0.5s;
+}
+
+.carta.mostrar {
+    display: block;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>💙 20 Rosas para Ti 💙</h1>
+<h2>20 de Abril 🌹</h2>
+
+<p class="mensaje">
+Porque 20 rosas son pocas para todo lo que siento por ti 💖
+</p>
+
+<img src="ramo.jpg" class="ramo">
+
+<p class="mensaje">
+Eres mi razón, mi todo, mi amor 💕
+</p>
+
+<!-- BOTON CARTA -->
+<button onclick="abrirCarta()">💌 Abrir Carta</button>
+
+<!-- CARTA -->
+<div class="carta" id="carta">
+    <h3>Para ti 💖</h3>
+    <p>
+    Hola amorcito, se que posiblemente me tarde en esto. Pido perdon por eso
+    queria subirlo a github pero me quede sin creditos para hacerlo y hoy se
+    recargaron jsjs. Pero lo importante es que te dare estas 20 rosas por el
+    20 de marzo, simbolizan todo el amor que te tengo mi amorcito bello, y 
+    te dare mas regalos asi te lo prometo amorcito ya que te amo con todo de
+    mi ser💕
+    </p>
+    <button onclick="cerrarCarta()">Cerrar</button>
+</div>
+
+<!-- MUSICA -->
+<div style="margin-top:30px;">
+    <p style="color:white;">🎵 Nuestra canción 🎵</p>
+    <audio controls autoplay loop>
+        <source src="cancion.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<script>
+// corazones
+function crearCorazon() {
+    const corazon = document.createElement("div");
+    corazon.classList.add("corazon");
+    corazon.innerHTML = "💖";
+
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.fontSize = (Math.random() * 20 + 15) + "px";
+
+    document.body.appendChild(corazon);
+
+    setTimeout(() => {
+        corazon.remove();
+    }, 6000);
+}
+setInterval(crearCorazon, 300);
+
+// carta
+function abrirCarta() {
+    document.getElementById("carta").classList.add("mostrar");
+}
+
+function cerrarCarta() {
+    document.getElementById("carta").classList.remove("mostrar");
+}
+</script>
+
+</body>
+</html>
